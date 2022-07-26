@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Actors/Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 4
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -32 )
+current = true
+zoom = Vector2( 0.219, 0.241 )
+smoothing_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="LW_Raycast" type="RayCast2D" parent="Raycasts"]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 9 )
+collision_mask = 4
+collide_with_areas = true
+
+[node name="RW_Raycast" type="RayCast2D" parent="Raycasts"]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 9 )
+collision_mask = 4
+
+[node name="G_Raycast" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 0, 9 )
+collision_mask = 4
